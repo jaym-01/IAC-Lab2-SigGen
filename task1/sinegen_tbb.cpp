@@ -2,6 +2,7 @@
 #include "verilated.h"
 #include "verilated_vcd_c.h"
 #include "Vsinegen.h"
+#include "iostream"
 
 int main(int argc, char **argv, char **env){
     Verilated::commandArgs(argc, argv);
@@ -15,7 +16,7 @@ int main(int argc, char **argv, char **env){
 
     if(vbdOpen() != 1) return -1;
 
-    vbdHeader("Lab2: Sine Gen");
+    vbdHeader("Lab2: Sine Gen"); 
 
     // init simulation inputs
     top->en = 0;
@@ -33,6 +34,11 @@ int main(int argc, char **argv, char **env){
 
         top->rst = (i < 3);
         top->en = (i > 2);
+
+        // increasing the increment -> causes it to skip values
+        // this skippling values means that the argument 2*pi*f is greater
+        // this means that f increases
+        top->incr = (vbdValue()/10) + 1;
 
         if(Verilated::gotFinish() || vbdGetkey() == 'q') exit(0);
 
