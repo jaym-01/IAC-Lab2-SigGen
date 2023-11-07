@@ -1,4 +1,4 @@
-rm -r obj_dir
+sudo rm -rf obj_dir
 sudo rm sigdelay.vcd
 
 verilator -Wall --cc --trace counter.sv --exe sigdelay_tb.cpp
