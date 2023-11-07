@@ -35,6 +35,7 @@ int main(int argc, char **argv, char **env){
         top->rst = (i < 3);
         top->en = (i > 2);
 
+        // COMMENT OUT FOR ORIGINAL BEHAVIOUR
         // increasing the increment -> causes it to skip values
         // this skippling values means that the argument 2*pi*f is greater
         // this means that f increases

@@ -1,5 +1,5 @@
-rm -r obj_dir
-# rm counter.vcd
+sudo rm -rf obj_dir
+sudo rm -f counter.vcd
 
 verilator -Wall --cc --trace counter.sv --exe sinegen_tbb.cpp
 verilator -Wall --cc --trace rom.sv --exe sinegen_tbb.cpp
