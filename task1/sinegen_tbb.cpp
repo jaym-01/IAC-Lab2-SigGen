@@ -10,9 +10,9 @@ int main(int argc, char **argv, char **env){
     Vsinegen *top = new Vsinegen;
 
     Verilated::traceEverOn(true);
-    // VerilatedVcdC *tfp = new VerilatedVcdC;
-    // top->trace(tfp, 99);
-    // tfp->open("sinegencd.vcd");
+    VerilatedVcdC *tfp = new VerilatedVcdC;
+    top->trace(tfp, 99);
+    tfp->open("sinegencd.vcd");
 
     if(vbdOpen() != 1) return -1;
 
@@ -26,6 +26,7 @@ int main(int argc, char **argv, char **env){
 
     for(int i = 0; i < 1000000; i++){
         for(int j = 0; j < 2; j++){
+            tfp->dump(2*i+j);
             top->clk = !top->clk;
             top->eval();
         }
